@@ -22,7 +22,7 @@ mongoose.connect( 'mongodb://localhost/bddOrange', function(err) {
 var db = mongoose.connection;
 
 app.get('/', function(req, res){
-  res.send('Please use /clients');
+  res.send('all the base  get: /clients\nUser by id  get: /clients/:_id\n etc\nrm User  delete: /clients/:_id');
 });
 
 app.get('/clients', function(req, res){
@@ -60,16 +60,40 @@ app.get('/clients/:_id/home', function(req, res){
   });
 });
 
-app.get('/clients/:_id/networks', function(req, res){
-  User.getUserNetworksById(req.params._id, function(err, data){
+app.get('/clients/:_id/phoneplan', function(req, res){
+  User.getUserPhonePlanById(req.params._id, function(err, data){
     if (err) {throw err;}
     res.json(data);
   });
 });
 
-app.get('/clients/:_id/phoneplan', function(req, res){
-  User.getUserPhonePlanById(req.params._id, function(err, data){
-    if (err) {throw err;}
-    res.json(data);
+// not usefull for us
+//
+// app.get('/clients/:_id/networks', function(req, res){
+//   User.getUserNetworksById(req.params._id, function(err, data){
+//     if (err) {throw err;}
+//     res.json(data);
+//   });
+// });
+
+app.post('/clients', function(req, res){
+  User.postUser(req.body, function (err, newUser) {
+  if (err) {throw(err);}
+  res.json(newUser);
+  });
+});
+
+
+app.delete('/clients/:_id', function(req, res){
+  User.deleteUser(req.params._id, function (err, rm) {
+  if (err) {throw(err);}
+  res.json(rm);
+  });
+});
+
+app.post('/clients/:_id', function(req, res){
+  User.updateUser(req.params._id, req.body, function (err, newUser) {
+    if (err) {throw(err);}
+    res.json(newUser);
   });
 });

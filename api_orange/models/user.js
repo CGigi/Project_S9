@@ -42,28 +42,29 @@ var userSchema = new mongoose.Schema({
 		lock: String
 	},
 
-	networks: [{
-		longitude: Number,
-		latitude: Number,
-		hotspotId: String,
-		city: String,
-		place: String,
-		postalCode: String,
-		name: String,
-		distance: Number,
-		state: String,
-		company: String,
-		website: String,
-		ssid: String,
-		clients: Number
-	}],
+// not usefull for us
+	// networks: [{
+	// 	longitude: Number,
+	// 	latitude: Number,
+	// 	hotspotId: String,
+	// 	city: String,
+	// 	place: String,
+	// 	postalCode: String,
+	// 	name: String,
+	// 	distance: Number,
+	// 	state: String,
+	// 	company: String,
+	// 	website: String,
+	// 	ssid: String,
+	// 	clients: Number
+	// }],
 
 	phone_plan: {
 		subscription: String,
 		phone_number: String,
 		consomation: {
-			calls: String,
-			data: String,
+			calls: Number,
+			data: Number,
 			sms: Number
 		}
 	}
@@ -94,10 +95,24 @@ module.exports.getUserHomeById = function(id, callback){
 	User.findById(id, callback).select('home');
 }
 
-module.exports.getUserNetworksById = function(id, callback){
-	User.findById(id, callback).select('networks');
-}
-
 module.exports.getUserPhonePlanById = function(id, callback){
 	User.findById(id, callback).select('phone_plan');
+}
+
+// not usefull for us
+// module.exports.getUserNetworksById = function(id, callback){
+// 	User.findById(id, callback).select('networks');
+// }
+
+
+module.exports.postUser = function(data, callback){
+	User.create(data, callback);
+}
+
+module.exports.deleteUser = function(id, callback){
+	User.remove({"_id": id}, callback);
+}
+
+module.exports.updateUser = function(id, data, callback){
+	User.findOneAndUpdate({"_id": id}, data, callback);
 }
