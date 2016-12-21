@@ -62,6 +62,7 @@ var userSchema = new mongoose.Schema({
 	phone_plan: {
 		subscription: String,
 		phone_number: String,
+		expire_date: Date,
 		consomation: {
 			calls: Number,
 			data: Number,
