@@ -80,9 +80,8 @@ app.post('/clients', function(req, res){
   User.postUser(req.body, function (err, newUser) {
   if (err) {throw(err);}
   res.json(newUser);
-  });
+  });  
 });
-
 
 app.delete('/clients/:_id', function(req, res){
   User.deleteUser(req.params._id, function (err, rm) {
