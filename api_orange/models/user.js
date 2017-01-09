@@ -42,23 +42,6 @@ var userSchema = new mongoose.Schema({
 		lock: String
 	},
 
-// not usefull for us
-	// networks: [{
-	// 	longitude: Number,
-	// 	latitude: Number,
-	// 	hotspotId: String,
-	// 	city: String,
-	// 	place: String,
-	// 	postalCode: String,
-	// 	name: String,
-	// 	distance: Number,
-	// 	state: String,
-	// 	company: String,
-	// 	website: String,
-	// 	ssid: String,
-	// 	clients: Number
-	// }],
-
 	phone_plan: {
 		subscription: String,
 		phone_number: String,
@@ -74,12 +57,10 @@ var userSchema = new mongoose.Schema({
 
 var User = module.exports = mongoose.model('User',userSchema);
 
-// Get User
 module.exports.getUsers = function(callback, limit){
 	User.find(callback).limit(limit);
 }
 
-// Get User By Id
 module.exports.getUserById = function(id, callback){
 	User.findById(id, callback);
 }
@@ -99,12 +80,6 @@ module.exports.getUserHomeById = function(id, callback){
 module.exports.getUserPhonePlanById = function(id, callback){
 	User.findById(id, callback).select('phone_plan');
 }
-
-// not usefull for us
-// module.exports.getUserNetworksById = function(id, callback){
-// 	User.findById(id, callback).select('networks');
-// }
-
 
 module.exports.postUser = function(data, callback){
 	User.create(data, callback);
