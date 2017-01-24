@@ -1,0 +1,35 @@
+          
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Login</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div ng-controller="LoginController">
+        <div class="col-md-6" >
+          <form id="formulaire" action="/">
+            
+            <div class="form-group has-feedback">
+              <input type="email" class="form-control" id="email" name ="email" ng-model="email" placeholder="Enter email" value="" required>
+              <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+              <input type="password" class="form-control" id="password" name="password" ng-model="password" placeholder="Password"  value="" required>
+              
+              <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="row">
+              <div class="col-xs-8">
+              </div>
+              <div class="col-xs-4">
+                <button type="button" class="btn btn-primary btn-block btn-flat" ng-click="submit()">Connexion</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+          
