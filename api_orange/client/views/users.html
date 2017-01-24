@@ -19,7 +19,7 @@
       </form>
     </div>
     <div class="row">
-      <div ng-repeat="user in users">
+      <div ng-repeat="user in users | filter:data">
         <div class="col-md-6">
           <div class="col-md-6">
             <h4>Id : {{user._id}}</h4>
