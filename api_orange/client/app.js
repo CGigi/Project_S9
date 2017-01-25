@@ -14,7 +14,6 @@ myApp.config(function($routeProvider){
 		controller:'UsersController',
 		templateUrl: 'views/users.html'
 		
-		
 	})
 	.when('/login', {
 		controller:'LoginController',

@@ -32,7 +32,7 @@ myApp.controller('UsersController', ['$scope', '$http', '$location', '$routePara
 
 	$scope.updateUser = function(user){
 		var clienteId = user._id;
-		$http.post('/clients/' +clienteId).then(function(response){
+		$http.post('/clients/' +clienteId, user).then(function(response){
 			$scope.getUsers();
              //or this
             //$scope.users.splice(user._id,1);
