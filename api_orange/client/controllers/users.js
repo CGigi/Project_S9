@@ -11,8 +11,31 @@ myApp.controller('UsersController', ['$scope', '$http', '$location', '$routePara
 	}
 
 	$scope.getUser = function(){
-		$http.get('/clients/' + $rootScope.userId).success(function(response){
-			$scope.user = response;
+		var clienteId = $routeParams._id; 
+		$http.get('/clients/' +clienteId).success(function(response){
+			$scope.user = response; 
+		});
+	}
+
+	$scope.deleteUser = function(user){
+		var clienteId = user._id; 
+		$http.delete('/clients/' +clienteId).success(function(response){
+			$scope.getUsers();
+             //or this
+            $scope.users.splice(user._id,1);
+		});
+	}
+
+	$scope.editUser = function(user){
+		$scope.clickedUser = user;
+	}
+
+	$scope.updateUser = function(user){
+		var clienteId = user._id; 
+		$http.post('/clients/' +clienteId).success(function(response){
+			$scope.getUsers();
+             //or this
+            //$scope.users.splice(user._id,1);
 		});
 	}
 

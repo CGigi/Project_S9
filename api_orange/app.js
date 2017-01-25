@@ -67,15 +67,6 @@ app.get('/clients/:_id/phoneplan', function(req, res){
   });
 });
 
-// not usefull for us
-//
-// app.get('/clients/:_id/networks', function(req, res){
-//   User.getUserNetworksById(req.params._id, function(err, data){
-//     if (err) {throw err;}
-//     res.json(data);
-//   });
-// });
-
 app.post('/clients', function(req, res){
   User.postUser(req.body, function (err, newUser) {
   if (err) {throw(err);}

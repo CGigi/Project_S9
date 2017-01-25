@@ -1,7 +1,7 @@
 var myApp = angular.module('myApp',['ngRoute']);
 
 myApp.config(function($routeProvider){
-	$routeProvider.when('/clients', {
+	$routeProvider.when('/', {
 		controller:'UsersController',
 		templateUrl: 'views/users.html'
 		
@@ -14,6 +14,12 @@ myApp.config(function($routeProvider){
 	.when('/clients/:_id', {
 		controller:'UsersController',
 		templateUrl: 'views/user.html'
+		
+		
+	})
+	.when('/delete/:_id', {
+		controller:'UsersController',
+		templateUrl: 'views/users.html'
 		
 		
 	})
