@@ -22,7 +22,7 @@ myApp.controller('UsersController', ['$scope', '$http', '$location', '$routePara
 		$http.delete('/clients/' +clienteId).then(function(response){
 			$scope.getUsers();
              //or this
-            $scope.users.splice(user._id,1);
+            //$scope.users.splice(user._id,1);
 		});
 	}
 
@@ -39,5 +39,11 @@ myApp.controller('UsersController', ['$scope', '$http', '$location', '$routePara
 		});
 	}
 
+	$scope.addOneUser = function(user){
+		console.log(user);
+		$http.post('/clients', user).then(function(response){
+			$scope.getUsers();
+		});
+	}
 
 }]);
