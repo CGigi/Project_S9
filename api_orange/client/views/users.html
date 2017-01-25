@@ -19,6 +19,7 @@
       </form>
     </div>
     <div class="row">
+<<<<<<< HEAD
     <div class="col-md-8">
 
       <table class="table table-condensed">
@@ -107,6 +108,18 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
+=======
+      <div ng-repeat="user in users | filter:data">
+        <div class="col-md-6">
+          <div class="col-md-6">
+            <h4>Id : {{user._id}}</h4>
+            <p>Lastname  : {{user.identity.last_name}}</p>
+            <p>Firstname : {{user.identity.first_name}}</p>
+            <p>Phone     : {{user.phone_plan.phone_number}}</p>
+            <p>Plan      : {{user.phone_plan.subscription}}</p>
+            <!-- <p>Title : {{user.VOD.rented_videos.title}}</p> -->
+            <a class="btn btn-primary" href="#/clients/{{user._id}}">View Details</a>
+>>>>>>> 61bb6d6fa5b9b7da058a6c956941a5b7d983f1f9
           </div>
           
         </div>
