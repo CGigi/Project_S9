@@ -4,22 +4,22 @@ myApp.controller('UsersController', ['$scope', '$http', '$location', '$routePara
 	console.log('UsersController loaded...');
 
 	$scope.getUsers = function(){
-		$http.get('/clients').success(function(response){
-			$scope.users = response;
+		$http.get('/clients').then(function(response){
+			$scope.users = response.data;
 			$scope.userId = $rootScope.userId;
 		});
 	}
 
 	$scope.getUser = function(){
-		var clienteId = $routeParams._id; 
-		$http.get('/clients/' +clienteId).success(function(response){
-			$scope.user = response; 
+		var clienteId = $routeParams._id;
+		$http.get('/clients/' +clienteId).then(function(response){
+			$scope.user = response.data;
 		});
 	}
 
 	$scope.deleteUser = function(user){
-		var clienteId = user._id; 
-		$http.delete('/clients/' +clienteId).success(function(response){
+		var clienteId = user._id;
+		$http.delete('/clients/' +clienteId).then(function(response){
 			$scope.getUsers();
              //or this
             $scope.users.splice(user._id,1);
@@ -31,8 +31,8 @@ myApp.controller('UsersController', ['$scope', '$http', '$location', '$routePara
 	}
 
 	$scope.updateUser = function(user){
-		var clienteId = user._id; 
-		$http.post('/clients/' +clienteId).success(function(response){
+		var clienteId = user._id;
+		$http.post('/clients/' +clienteId).then(function(response){
 			$scope.getUsers();
              //or this
             //$scope.users.splice(user._id,1);
